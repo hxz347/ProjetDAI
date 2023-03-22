@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>ctrlPageConnexion</servlet-name>
+  	<display-name>ctrlPageConnexion</display-name>
+  	<description></description>
+  	<servlet-class>Ajax.ctrl.ctrlPageConnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ctrlPageConnexion</servlet-name>
+  	<url-pattern>/ctrlPageConnexion</url-pattern>
+  </servlet-mapping>
 </web-app>
