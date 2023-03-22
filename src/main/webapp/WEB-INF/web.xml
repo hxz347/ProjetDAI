@@ -1,7 +1,51 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
   <display-name>Archetype Created Web Application</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>index</servlet-name>
+    <jsp-file>/index.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>etudiant</servlet-name>
+    <jsp-file>/pageEtu1.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>enseignant</servlet-name>
+    <jsp-file>/pageEnseign1.jsp</jsp-file>
+  </servlet>
+   <servlet>
+    <servlet-name>scolarite</servlet-name>
+    <jsp-file>/pageScolar1.jsp</jsp-file>
+  </servlet>
+   <servlet>
+   <description></description>
+   <display-name>CtrlEnseign1</display-name>
+   	<servlet-name>CtrlEnseign1</servlet-name>
+   	<servlet-class>ajax.ctrl.CtrlEnseign1</servlet-class>
+   </servlet>
+  
+  
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern>/Accueil</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>enseignant</servlet-name>
+    <url-pattern>/Enseignant</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>scolarite</servlet-name>
+    <url-pattern>/Scolarite</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CtrlEnseign1</servlet-name>
+  	<url-pattern>/CtrlEnseign1</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>
+
