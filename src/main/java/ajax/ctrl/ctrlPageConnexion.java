@@ -1,4 +1,4 @@
-package Ajax.ctrl;
+package ajax.ctrl;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
