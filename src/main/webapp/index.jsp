@@ -24,12 +24,15 @@
                     <h2>AUTHENTIFICATION</h2>
                     <form action="CtrlConnection" method="get">
                         <div class="inputBox">
-                            <input type="text" placeholder="IDENTIFIANT">
+                            <input type="text" name="id" placeholder="IDENTIFIANT">
 
                         </div>
                         <div class="inputBox">
-                            <input type="password" placeholder="MOT DE PASSE">
+                            <input type="password" name="pwd" placeholder="MOT DE PASSE">
 
+                        </div>
+                        <div>
+                        	<label><input type="radio" name="type"></label>
                         </div>
                         <div class="inputBox">
                             <input type="submit" value="SE CONNECTER">
