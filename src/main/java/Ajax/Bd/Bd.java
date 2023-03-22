@@ -1,4 +1,4 @@
-package Ajax.Bd;
+package ajax.Bd;
 
 import java.sql.*;
 
