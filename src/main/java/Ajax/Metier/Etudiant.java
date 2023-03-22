@@ -32,7 +32,8 @@ public class Etudiant {
 		this.emailPE = emailPE;
 	}
 
-
+	
+	//seter et geter
 	public Integer getIdE() {
 		return idE;
 	}
