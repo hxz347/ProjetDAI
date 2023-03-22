@@ -17,7 +17,7 @@ section {
     min-height: 100vh;
     /* linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片 */
     background: url("../image/bg.jpg") fixed no-repeat;
-	background-size:100% 100%;
+	
 }
 
 /* 背景颜色 */
@@ -65,7 +65,7 @@ section .color {
 /* 背景圆动画 */
 
 @keyframes animate {
-    0%, 100%, {
+    0%, 100% {
         transform: translateY(-50px);
     }
     50% {
