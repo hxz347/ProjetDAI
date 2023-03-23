@@ -7,7 +7,8 @@ public class Etudiant extends User{
 		private Integer idE;
 		private String photoE;
 		private String typeE;
-		private String emailPE;
+		private String emailE;
+		private String formation;
 		private static int compteur=1;
 		
 		
@@ -16,12 +17,12 @@ public class Etudiant extends User{
 
 
 		public Etudiant(String nomE, String prenomE, String photoE, String typeE, String loginE, String pwdE,
-				String emailPE) {
+				String emailPE,String formationE) {
 			super(nomE,prenomE,loginE,pwdE);
 			this.idE =compteur++;
 			this.photoE = photoE;
 			this.typeE = typeE;	
-			this.emailPE = emailPE;
+			this.emailE = emailPE;
 		}
 
 		
@@ -56,13 +57,23 @@ public class Etudiant extends User{
 		}
 
 
-		public String getEmailPE() {
-			return emailPE;
+		public String getEmailE() {
+			return emailE;
 		}
 
 
-		public void setEmailPE(String emailPE) {
-			this.emailPE = emailPE;
+		public void setEmailE(String emailE) {
+			this.emailE = emailE;
+		}
+
+
+		public String getFormation() {
+			return formation;
+		}
+
+
+		public void setFormation(String formation) {
+			this.formation = formation;
 		}
 
 
@@ -70,7 +81,7 @@ public class Etudiant extends User{
 		public int hashCode() {
 			final int prime = 31;
 			int result = super.hashCode();
-			result = prime * result + Objects.hash(emailPE, idE, photoE, typeE);
+			result = prime * result + Objects.hash(emailE, formation, idE, photoE, typeE);
 			return result;
 		}
 
@@ -84,15 +95,24 @@ public class Etudiant extends User{
 			if (getClass() != obj.getClass())
 				return false;
 			Etudiant other = (Etudiant) obj;
-			return Objects.equals(emailPE, other.emailPE) && Objects.equals(idE, other.idE)
-					&& Objects.equals(photoE, other.photoE) && Objects.equals(typeE, other.typeE);
+			return Objects.equals(emailE, other.emailE) && Objects.equals(formation, other.formation)
+					&& Objects.equals(idE, other.idE) && Objects.equals(photoE, other.photoE)
+					&& Objects.equals(typeE, other.typeE);
 		}
 
 
 		@Override
 		public String toString() {
-			return "Etudiant [id=" + idE + ", photoE=" + photoE + ", typeE=" + typeE + ", emailPE=" + emailPE + "]";
+			return "Etudiant [idE=" + idE + ", photoE=" + photoE + ", typeE=" + typeE + ", emailE=" + emailE
+					+ ", formation=" + formation + "]";
 		}
+
+
+		
+		
+
+
+		
 
 
 		

@@ -22,19 +22,19 @@
             <div class="container">
                 <div class="form">
                     <h2>AUTHENTIFICATION</h2>
-                    <form action="CtrlConnection" method="get">
+                    <form action="CtrlPageConnexion" method="post">
                         <div class="inputBox">
-                            <input type="text" name="id" placeholder="IDENTIFIANT">
+                            <input type="text" name="id" placeholder="IDENTIFIANT" required="required">
 
                         </div>
                         <div class="inputBox">
-                            <input type="password" name="pwd" placeholder="MOT DE PASSE">
+                            <input type="password" name="pwd" placeholder="MOT DE PASSE" required="required">
 
                         </div>
                         <div class="radio">
-                        	<label><input type="radio" name="type">Etudiant</label>
-                        	<label><input type="radio" name="type">Enseignant</label>
-                        	<label><input type="radio" name="type">Scolarite</label>
+                        	<label><input type="radio" name="type" value="Etudiant" required="required">Etudiant</label>
+                        	<label><input type="radio" name="type" value="Enseignant" required="required">Enseignant</label>
+                        	<label><input type="radio" name="type" value="Scolarite" required="required">Scolarite</label>
                         </div>
                         <div class="inputBox">
                             <input type="submit" value="SE CONNECTER">
@@ -42,6 +42,7 @@
                         </div>
                         
                     </form>
+                    <div class="MessageAlter">${requestScope.msg_erreur}</div>
                 </div>
             </div>
         </div>
