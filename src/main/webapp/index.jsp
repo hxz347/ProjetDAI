@@ -31,8 +31,10 @@
                             <input type="password" name="pwd" placeholder="MOT DE PASSE">
 
                         </div>
-                        <div>
-                        	<label><input type="radio" name="type"></label>
+                        <div class="radio">
+                        	<label><input type="radio" name="type">Etudiant</label>
+                        	<label><input type="radio" name="type">Enseignant</label>
+                        	<label><input type="radio" name="type">Scolarite</label>
                         </div>
                         <div class="inputBox">
                             <input type="submit" value="SE CONNECTER">

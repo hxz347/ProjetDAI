@@ -1,50 +1,56 @@
 package ajax.metier;
 
-public class Scolarite {
+import java.util.Objects;
+
+public class Scolarite extends User{
+	
+	//propriete
 	private Integer idS;
-	private String nom;
-	private String prenom;
-	private String login;
-	private String pwd;
 	private static int compteur=1;
+	
+	//constructor
 	public Scolarite(String nom, String prenom, String login, String pwd) {
+		super(nom,prenom,login,pwd);
 		this.idS=compteur++;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.login = login;
-		this.pwd = pwd;
 	}
+	
 	public Scolarite() {
 	}
+	
+	//getter et setter
 	public Integer getIdS() {
 		return idS;
 	}
 	public void setIdS(Integer idS) {
 		this.idS = idS;
 	}
-	public String getNom() {
-		return nom;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(idS);
+		return result;
 	}
-	public void setNom(String nom) {
-		this.nom = nom;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Scolarite other = (Scolarite) obj;
+		return Objects.equals(idS, other.idS);
 	}
-	public String getPrenom() {
-		return prenom;
+
+	@Override
+	public String toString() {
+		return "Scolarite [idS=" + idS + "]";
 	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
+	
+	
+	
 	
 }

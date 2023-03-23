@@ -57,6 +57,11 @@ public class Bd {
 		}
 	
 	/*
+	 * Verifier la connexion
+	 */
+	public static 
+	
+	/*
 	 * récuperer les cours d'un enseignant
 	 */
 	public static ArrayList<Seance> infoEnseign (String emailEnseign) throws ClassNotFoundException, SQLException

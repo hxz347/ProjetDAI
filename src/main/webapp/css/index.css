@@ -216,3 +216,10 @@ section .color {
     font-weight: 600;
     text-decoration: none;
 }
+
+.form .radio{
+	font-size : 1em;
+	font-weight:bold;
+	margin-top:10px;
+	padding:15px;
+}
