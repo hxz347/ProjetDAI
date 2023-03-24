@@ -75,19 +75,9 @@
             	<div> Type :</div>
             	<div> Formation :</div>
             	<div> Photo :</div>
-            	 <!--<div class="col-md-2" style="margin-top: 10px;">
-    				<label class="control-label file" style="position: relative;">
-	        			<div>           
-	            		<img id="userUrl"  style="border-radius: 100px;" src="${user.userUrl}"> 
-	        			</div>
-	        			<input type="file" id="photo" style="position: absolute;font-size: 18px;right: 0;top: 0;opacity: 0;">
-	        			<input type="hidden" id="userId" style="position: absolute;font-size: 18px;right: 0;top: 0;opacity: 0;" value="${user.userId}">
-   				   </label>
-    				<p style="margin-left: 20px;">点击头像选择图片，再点击上传</p>
-    				<input id="changeBtn" style="width: 100px;margin-left: 20px;" class="btn btn-info" value="上传" >
-				</div>-->
+            	 
     </div>
-            <!--   <div class="handler"></div> -->
+           
         </div>
     </div>
     <script >

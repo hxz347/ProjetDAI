@@ -16,7 +16,8 @@ section {
     align-items: center;
     min-height: 100vh;
     /* linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片 */
-    background: url("../image/bg.jpg") fixed no-repeat;
+    background: url("../image/bg.jpg") ;
+    background-size:100%;
 	
 }
 

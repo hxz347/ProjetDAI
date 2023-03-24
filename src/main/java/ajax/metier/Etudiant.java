@@ -2,16 +2,13 @@ package ajax.metier;
 
 import java.util.Objects;
 
-public class Etudiant {
+public class Etudiant extends User{
 	//Propriete
 		private Integer idE;
-		private String nomE;
-		private String prenomE;
 		private String photoE;
 		private String typeE;
-		private String loginE;
-		private String pwdE;
-		private String emailPE;
+		private String emailE;
+		private String formation;
 		private static int compteur=1;
 		
 		
@@ -20,16 +17,12 @@ public class Etudiant {
 
 
 		public Etudiant(String nomE, String prenomE, String photoE, String typeE, String loginE, String pwdE,
-				String emailPE) {
-			super();
+				String emailPE,String formationE) {
+			super(nomE,prenomE,loginE,pwdE);
 			this.idE =compteur++;
-			this.nomE = nomE;
-			this.prenomE = prenomE;
 			this.photoE = photoE;
-			this.typeE = typeE;
-			this.loginE = loginE;
-			this.pwdE = pwdE;
-			this.emailPE = emailPE;
+			this.typeE = typeE;	
+			this.emailE = emailPE;
 		}
 
 		
@@ -41,26 +34,6 @@ public class Etudiant {
 
 		public void setIdE(Integer idE) {
 			this.idE = idE;
-		}
-
-
-		public String getNomE() {
-			return nomE;
-		}
-
-
-		public void setNomE(String nomE) {
-			this.nomE = nomE;
-		}
-
-
-		public String getPrenomE() {
-			return prenomE;
-		}
-
-
-		public void setPrenomE(String prenomE) {
-			this.prenomE = prenomE;
 		}
 
 
@@ -84,46 +57,32 @@ public class Etudiant {
 		}
 
 
-		public String getLoginE() {
-			return loginE;
+		public String getEmailE() {
+			return emailE;
 		}
 
 
-		public void setLoginE(String loginE) {
-			this.loginE = loginE;
+		public void setEmailE(String emailE) {
+			this.emailE = emailE;
 		}
 
 
-		public String getPwdE() {
-			return pwdE;
+		public String getFormation() {
+			return formation;
 		}
 
 
-		public void setPwdE(String pwdE) {
-			this.pwdE = pwdE;
-		}
-
-
-		public String getEmailPE() {
-			return emailPE;
-		}
-
-
-		public void setEmailPE(String emailPE) {
-			this.emailPE = emailPE;
-		}
-
-
-		@Override
-		public String toString() {
-			return "Etudiant [idE=" + idE + ", nomE=" + nomE + ", prenomE=" + prenomE + ", photoE=" + photoE + ", typeE="
-					+ typeE + ", loginE=" + loginE + ", pwdE=" + pwdE + ", emailPE=" + emailPE + "]";
+		public void setFormation(String formation) {
+			this.formation = formation;
 		}
 
 
 		@Override
 		public int hashCode() {
-			return Objects.hash(emailPE, idE, loginE, nomE, photoE, prenomE, pwdE, typeE);
+			final int prime = 31;
+			int result = super.hashCode();
+			result = prime * result + Objects.hash(emailE, formation, idE, photoE, typeE);
+			return result;
 		}
 
 
@@ -131,16 +90,32 @@ public class Etudiant {
 		public boolean equals(Object obj) {
 			if (this == obj)
 				return true;
-			if (obj == null)
+			if (!super.equals(obj))
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
 			Etudiant other = (Etudiant) obj;
-			return Objects.equals(emailPE, other.emailPE) && Objects.equals(idE, other.idE)
-					&& Objects.equals(loginE, other.loginE) && Objects.equals(nomE, other.nomE)
-					&& Objects.equals(photoE, other.photoE) && Objects.equals(prenomE, other.prenomE)
-					&& Objects.equals(pwdE, other.pwdE) && Objects.equals(typeE, other.typeE);
+			return Objects.equals(emailE, other.emailE) && Objects.equals(formation, other.formation)
+					&& Objects.equals(idE, other.idE) && Objects.equals(photoE, other.photoE)
+					&& Objects.equals(typeE, other.typeE);
 		}
+
+
+		@Override
+		public String toString() {
+			return "Etudiant [idE=" + idE + ", photoE=" + photoE + ", typeE=" + typeE + ", emailE=" + emailE
+					+ ", formation=" + formation + "]";
+		}
+
+
+		
+		
+
+
+		
+
+
+		
 		
 		
 		
