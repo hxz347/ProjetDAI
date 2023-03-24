@@ -19,7 +19,7 @@ import ajax.metier.User;
  * Servlet implementation class CtrlPageConnexion
  */
 public class CtrlPageConnexion extends HttpServlet {
-	
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -30,8 +30,6 @@ public class CtrlPageConnexion extends HttpServlet {
 		String login=request.getParameter("id");
 		String pwd=request.getParameter("pwd");
 		String type=request.getParameter("type");
-		
-		
 		try {
 			User user=Bd.verifierConnexion(login, pwd, type);
 			if(user==null) {
@@ -73,4 +71,7 @@ public class CtrlPageConnexion extends HttpServlet {
 		doGet(request, response);
 	}
 
+
 }
+
+

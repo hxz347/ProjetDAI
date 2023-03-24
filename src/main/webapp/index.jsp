@@ -22,6 +22,7 @@
             <div class="container">
                 <div class="form">
                     <h2>AUTHENTIFICATION</h2>
+<<<<<<< HEAD
                     <form action="CtrlPageConnexion" method="get">
                         <div class="inputBox">
                             <input type="text" placeholder="IDENTIFIANT" name="id">
@@ -32,6 +33,18 @@
 
                         </div>
                          <div class="radio">
+=======
+                    <form action="CtrlPageConnexion" method="post">
+                        <div class="inputBox">
+                            <input type="text" name="id" placeholder="IDENTIFIANT" required="required">
+
+                        </div>
+                        <div class="inputBox">
+                            <input type="password" name="pwd" placeholder="MOT DE PASSE" required="required">
+
+                        </div>
+                        <div class="radio">
+>>>>>>> b8cc3f05994a0877a42d33270d740ae44365517c
                         	<label><input type="radio" name="type" value="Etudiant" required="required">Etudiant</label>
                         	<label><input type="radio" name="type" value="Enseignant" required="required">Enseignant</label>
                         	<label><input type="radio" name="type" value="Scolarite" required="required">Scolarite</label>

@@ -50,7 +50,4 @@ public class Scolarite extends User{
 		return "Scolarite [idS=" + idS + "]";
 	}
 	
-	
-	
-	
 }

@@ -26,9 +26,7 @@ public class Enseignant extends User {
 		this.idEn = idEn;
 	}
 
-	
 
-	@Override
 	public String toString() {
 		return "Enseignant [idEn=" + idEn + "]";
 	}
