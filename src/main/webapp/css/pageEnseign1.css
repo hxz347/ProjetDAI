@@ -204,3 +204,6 @@ body{
 .right-box .handler.close:hover::after{
     transform: skewX(-15deg);
 }
+td{
+	width: 130px;
+}

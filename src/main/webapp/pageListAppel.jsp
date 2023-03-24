@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.io.*,java.util.List,java.util.ArrayList,ajax.metier.Seance"%>
+    import="java.io.*,java.util.List,java.util.ArrayList,ajax.metier.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +17,10 @@
         <div class="left-box">
    
             <ul>
+             	
                 <li class="item active">
-                 <i class="icon icon-vault"></i>   
+                 <i class="icon icon-vault"></i>
+                    
                     Mon emploi du temps
                 </li>
                 <li class="item">
@@ -29,8 +31,12 @@
                     <i class="icon icon-file"></i>
                     Liste des étudiants
                 </li>
+                
+                
+                
             </ul>
-            <div class="user-info"> 
+            <div class="user-info">
+                
                 <span>Déconnexion</span>
                 <i class="icon icon-gear"></i>
             </div>
@@ -40,7 +46,7 @@
         	</div>
             <div class="top">
             	
-                <span class="current-tag">Mon emploi du temps</span>
+                <span class="current-tag">Fiche d'appel</span>
                
                 <div class="btn">
                     <i class="icon icon-search"></i>
@@ -49,16 +55,27 @@
             </div>
             
            <div class="middle">
-           <h3 id="listSemaine">liste de semaine</h3>
-           <ul>
-           <li><a href="ServletEnseignTest?login=bour@123.com&semaine=1">Semaine 1 (05/09/2022 - 09/09/2022)</a></li>
-             <li><a href="ServletEnseignTest?login=bour@123.com&semaine=2">Semaine 2 (12/09/2022 - 16/09/2022)</a></li>
-           </ul>
+           <a href="ServletEnseignTest?login=bour@123.com&semaine=1">Retour</a>  
+           <%  
+           ArrayList<Etudiant> listEtudiant=new ArrayList<Etudiant>();
+           if(listEtudiant!=null){
+           listEtudiant=(ArrayList<Etudiant>)request.getAttribute("etudiants");
+           out.println("<table>");
+           out.println("<tr>");
+           out.println("<th>Nom</th>");
+           out.println("</tr>");
+           for(Etudiant e:listEtudiant) {
+        	   out.println("<tr>");
+        	   out.println("<td>"+e.getNom()+"</td>");
+        	   
+			
+				 out.println("</tr>");
+			}
+           out.println("</table>");}
+           %>
            
+        
            
-      
-           
-  				
    		   </div>
             <!--   <div class="handler"></div> -->
         </div>
@@ -92,6 +109,7 @@
             this.classList.remove('close');
         }
     })
+   
     </script>
 </body>
 </html>

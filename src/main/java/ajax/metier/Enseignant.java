@@ -1,13 +1,9 @@
 package ajax.metier;
 import java.util.Objects;
 
-public class Enseignant {
+public class Enseignant extends User {
 	//Propriete
 	private Integer idEn;
-	private String nomEn;
-	private String prenomEn;
-	private String loginEn;
-	private String pwdEn;
 	private static int compteur=1;
 	
 	
@@ -16,12 +12,8 @@ public class Enseignant {
 
 
 	public Enseignant( String nomEn, String prenomEn, String loginEn, String pwdEn) {
-		super();
+		super(nomEn,prenomEn,loginEn,pwdEn);
 		this.idEn = compteur++;
-		this.nomEn = nomEn;
-		this.prenomEn = prenomEn;
-		this.loginEn = loginEn;
-		this.pwdEn = pwdEn;
 	}
 
 
@@ -34,57 +26,17 @@ public class Enseignant {
 		this.idEn = idEn;
 	}
 
-
-	public String getNomEn() {
-		return nomEn;
-	}
-
-
-	public void setNomEn(String nomEn) {
-		this.nomEn = nomEn;
-	}
-
-
-	public String getPrenomEn() {
-		return prenomEn;
-	}
-
-
-	public void setPrenomEn(String prenomEn) {
-		this.prenomEn = prenomEn;
-	}
-
-
-	public String getLoginEn() {
-		return loginEn;
-	}
-
-
-	public void setLoginEn(String loginEn) {
-		this.loginEn = loginEn;
-	}
-
-
-	public String getPwdEn() {
-		return pwdEn;
-	}
-
-
-	public void setPwdEn(String pwdEn) {
-		this.pwdEn = pwdEn;
-	}
-
+	
 
 	@Override
 	public String toString() {
-		return "Enseignant [idEn=" + idEn + ", nomEn=" + nomEn + ", prenomEn=" + prenomEn + ", loginEn=" + loginEn
-				+ ", pwdEn=" + pwdEn + "]";
+		return "Enseignant [idEn=" + idEn + "]";
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idEn, loginEn, nomEn, prenomEn, pwdEn);
+		return Objects.hash(idEn);
 	}
 
 
@@ -97,9 +49,7 @@ public class Enseignant {
 		if (getClass() != obj.getClass())
 			return false;
 		Enseignant other = (Enseignant) obj;
-		return Objects.equals(idEn, other.idEn) && Objects.equals(loginEn, other.loginEn)
-				&& Objects.equals(nomEn, other.nomEn) && Objects.equals(prenomEn, other.prenomEn)
-				&& Objects.equals(pwdEn, other.pwdEn);
+		return Objects.equals(idEn, other.idEn) ;
 	}
 	
 	

@@ -21,10 +21,36 @@
     <jsp-file>/pageScolar1.jsp</jsp-file>
   </servlet>
    <servlet>
+    <servlet-name>enseignant2</servlet-name>
+    <jsp-file>/pageEmplo1.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>ficherAppel</servlet-name>
+    <jsp-file>/pageListAppel.jsp</jsp-file>
+  </servlet>
+   <servlet>
    <description></description>
-   <display-name>CtrlEnseign1</display-name>
-   	<servlet-name>CtrlEnseign1</servlet-name>
-   	<servlet-class>ajax.ctrl.CtrlEnseign1</servlet-class>
+   <display-name>ServletEnseign1</display-name>
+   	<servlet-name>ServletEnseign1</servlet-name>
+   	<servlet-class>ajax.ctrl.ServletEnseign1</servlet-class>
+   </servlet>
+   <servlet>
+   <description></description>
+   <display-name>ServletEnseignTest</display-name>
+   	<servlet-name>ServletEnseignTest</servlet-name>
+   		<servlet-class>ajax.ctrl.ServletEnseignTest</servlet-class>
+   </servlet>
+   <servlet>
+   	<description></description>
+   	<display-name>ServletFicheAppel</display-name>
+   	<servlet-name>ServletFicheAppel</servlet-name>
+   	<servlet-class>ajax.ctrl.ServletFicheAppel</servlet-class>
+   </servlet>
+   <servlet>
+   	<description></description>
+   	<display-name>CtrlPageConnexion</display-name>
+   	<servlet-name>CtrlPageConnexion</servlet-name>
+   	<servlet-class>ajax.ctrl.CtrlPageConnexion</servlet-class>
    </servlet>
   
   
@@ -33,16 +59,40 @@
     <url-pattern>/Accueil</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <servlet-name>etudiant</servlet-name>
+    <url-pattern>/Etudiant</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>enseignant</servlet-name>
     <url-pattern>/Enseignant</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>enseignant2</servlet-name>
+    <url-pattern>/Enseignant2</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>scolarite</servlet-name>
     <url-pattern>/Scolarite</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>CtrlEnseign1</servlet-name>
-  	<url-pattern>/CtrlEnseign1</url-pattern>
+    <servlet-name>ficherAppel</servlet-name>
+    <url-pattern>/FicherAppel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletEnseign1</servlet-name>
+  	<url-pattern>/ServletEnseign1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletEnseignTest</servlet-name>
+  	<url-pattern>/ServletEnseignTest</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletFicheAppel</servlet-name>
+  	<url-pattern>/ServletFicheAppel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CtrlPageConnexion</servlet-name>
+  	<url-pattern>/CtrlPageConnexion</url-pattern>
   </servlet-mapping>
   
   
