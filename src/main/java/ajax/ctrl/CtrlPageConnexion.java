@@ -30,8 +30,7 @@ public class CtrlPageConnexion extends HttpServlet {
 		String login=request.getParameter("id");
 		String pwd=request.getParameter("pwd");
 		String type=request.getParameter("type");
-		System.out.println(login);
-		System.out.println(type);
+		
 		
 		try {
 			User user=Bd.verifierConnexion(login, pwd, type);
