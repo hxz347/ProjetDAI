@@ -56,4 +56,14 @@
     <servlet-name>CtrlPageConnexion</servlet-name>
     <url-pattern>/CtrlPageConnexion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CtrlUpdatePhoto</display-name>
+    <servlet-name>CtrlUpdatePhoto</servlet-name>
+    <servlet-class>ajax.ctrl.CtrlUpdatePhoto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CtrlUpdatePhoto</servlet-name>
+    <url-pattern>/CtrlUpdatePhoto</url-pattern>
+  </servlet-mapping>
 </web-app>

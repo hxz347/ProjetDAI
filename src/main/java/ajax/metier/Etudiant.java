@@ -1,11 +1,12 @@
 package ajax.metier;
 
+import java.sql.Blob;
 import java.util.Objects;
 
 public class Etudiant extends User{
 	//Propriete
 		private Integer idE;
-		private String photoE;
+		private Blob photoE;
 		private String typeE;
 		private String emailE;
 		private String formation;
@@ -16,7 +17,7 @@ public class Etudiant extends User{
 		public Etudiant() {}
 
 
-		public Etudiant(String nomE, String prenomE, String photoE, String typeE, String loginE, String pwdE,
+		public Etudiant(String nomE, String prenomE, Blob photoE, String typeE, String loginE, String pwdE,
 				String emailPE,String formationE) {
 			super(nomE,prenomE,loginE,pwdE);
 			this.idE =compteur++;
@@ -37,13 +38,13 @@ public class Etudiant extends User{
 		}
 
 
-		public String getPhotoE() {
+		public Blob getPhotoE() {
 			return photoE;
 		}
 
 
-		public void setPhotoE(String photoE) {
-			this.photoE = photoE;
+		public void setPhotoE(Blob photoE) {
+			this.photoE =photoE ;
 		}
 
 

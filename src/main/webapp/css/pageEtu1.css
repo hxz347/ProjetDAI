@@ -149,7 +149,7 @@ body{
 }
 .right-box .middle div{
 	margin: 5px 35px;
-	width: 100px;
+	width: 400px;
     height: 40px;
 
 }
@@ -201,4 +201,19 @@ body{
 }
 .right-box .handler.close:hover::after{
     transform: skewX(-15deg);
+}
+
+.middle #containerPhoto img{
+	margin-top:1em;
+	display: block; 
+	width: 50%;
+	height: auto;	
+}
+
+.middle #containerPhoto #buttonUpdate{
+	margin-left:0;
+}
+
+.middle #containerPhoto #buttonUpdate input{
+	margin-top:1em;
 }

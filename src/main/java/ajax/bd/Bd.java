@@ -1,7 +1,15 @@
 package ajax.bd;
 
+import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import ajax.metier.Enseignant;
 import ajax.metier.*;
@@ -45,6 +53,7 @@ public class Bd {
 		} catch (SQLException ex) {
 			throw new SQLException(
 					"Exception Bd.connexion() - Problème de connexion à la base de données - " + ex.getMessage());
+			
 		}
 	}
 
@@ -52,90 +61,122 @@ public class Bd {
 	 * Verifier la connexion
 	 */
 	public static User verifierConnexion(String login, String pwd, String type)
-			throws ClassNotFoundException, SQLException {
+			throws ClassNotFoundException, SQLException, IOException {
 		
 		/*----- Création de la connexion à la base de données -----*/
 		if (Bd.cx == null) {
 			Bd.connexion();
 		}
-
-		String sqlEtudiant = "select * from Etudiant where loginE=?";
-		String sqlEnseignant = "select * from Enseignant where loginEn=?";
-		String sqlScolarite = "select * from Scolarite where login=?";
-
-		// VERIFIER SI LA CONNEXION APPARTIENT UN ETUDIANT
-		if (type.equals("Etudiant")) {
-			Etudiant etudiant = new Etudiant();
-
-			try (PreparedStatement st = Bd.cx.prepareStatement(sqlEtudiant)) {
-				/*----- Exécution de la requête -----*/
-				st.setString(1, login);
-				try (ResultSet rs = st.executeQuery()) {
-					while (rs.next()) {
-						if (pwd.equals(rs.getString("pwdE"))) {
-							etudiant.setIdE(rs.getInt("idE"));
-							etudiant.setNom(rs.getString("nomE"));
-							etudiant.setPrenom(rs.getString("prenomE"));
-							etudiant.setLogin(rs.getString("loginE"));
-							etudiant.setPwd(rs.getString("pwdE"));
-							etudiant.setTypeE(rs.getString("typeE"));
-							etudiant.setEmailE(rs.getString("emailPE"));
-							etudiant.setFormation(rs.getString("formation"));
-							
-							return etudiant;
+		if(Bd.cx!=null) {
+			String sqlEtudiant = "select * from Etudiant where loginE=?";
+			String sqlEnseignant = "select * from Enseignant where loginEn=?";
+			String sqlScolarite = "select * from Scolarite where login=?";
+	
+			// VERIFIER SI LA CONNEXION APPARTIENT UN ETUDIANT
+			if (type.equals("Etudiant")) {
+				Etudiant etudiant = new Etudiant();
+	
+				try (PreparedStatement st = Bd.cx.prepareStatement(sqlEtudiant)) {
+					/*----- Exécution de la requête -----*/
+					st.setString(1, login);
+					try (ResultSet rs = st.executeQuery()) {
+						while (rs.next()) {
+							if (pwd.equals(rs.getString("pwdE"))) {
+								//autre informations
+								etudiant.setIdE(rs.getInt("idE"));
+								etudiant.setNom(rs.getString("nomE"));
+								etudiant.setPrenom(rs.getString("prenomE"));
+								etudiant.setLogin(rs.getString("loginE"));
+								etudiant.setPwd(rs.getString("pwdE"));
+								etudiant.setTypeE(rs.getString("typeE"));
+								etudiant.setEmailE(rs.getString("emailPE"));
+								etudiant.setFormation(rs.getString("formation"));
+								 etudiant.setPhotoE(rs.getBlob("photoE"));
+								//etudiant.setPhotoE(path);
+								
+								// Close database connection
+								return etudiant;
+							}
 						}
+					}
+				}catch (SQLException ex) {
+					throw new SQLException("Exception Bd.verifierConnexion() : Problème SQL - " + ex.getMessage());
+				}
+			}
+			// VERIFIER SI LA CONNEXION APPARTIENT UN ENSEIGNANT
+			else if (type.equals("Enseignant")) {
+				Enseignant enseignant = new Enseignant();
+	
+				try (PreparedStatement st = Bd.cx.prepareStatement(sqlEnseignant)) {
+					/*----- Exécution de la requête -----*/
+					st.setString(1, login);
+					try (ResultSet rs = st.executeQuery()) {
+						while (rs.next()) {
+							if (pwd.equals(rs.getString("pwdEn"))) {
+								enseignant.setIdEn(rs.getInt("idEn"));
+								enseignant.setNom(rs.getString("nomEn"));
+								enseignant.setPrenom(rs.getString("prenomEn"));
+								enseignant.setLogin(rs.getString("loginEn"));
+								enseignant.setPwd(rs.getString("pwdEn"));
+								
+								return enseignant;
+							}
+						}
+					}
+					catch (SQLException ex) {
+						throw new SQLException("Exception Bd.verifierConnexion() : Problème SQL - " + ex.getMessage());
 					}
 				}
 			}
-		}
-		// VERIFIER SI LA CONNEXION APPARTIENT UN ENSEIGNANT
-		else if (type.equals("Enseignant")) {
-			Enseignant enseignant = new Enseignant();
-
-			try (PreparedStatement st = Bd.cx.prepareStatement(sqlEnseignant)) {
-				/*----- Exécution de la requête -----*/
-				st.setString(1, login);
-				try (ResultSet rs = st.executeQuery()) {
-					while (rs.next()) {
-						if (pwd.equals(rs.getString("pwdEn"))) {
-							enseignant.setIdEn(rs.getInt("idEn"));
-							enseignant.setNom(rs.getString("nomEn"));
-							enseignant.setPrenom(rs.getString("prenomEn"));
-							enseignant.setLogin(rs.getString("loginEn"));
-							enseignant.setPwd(rs.getString("pwdEn"));
-							
-							return enseignant;
+			// VERIFIER SI LA CONNEXION APPARTIENT UN SCOLARITE
+			else if (type.equals("Scolarite")) {
+				Scolarite scolarite = new Scolarite();
+	
+				try (PreparedStatement st = Bd.cx.prepareStatement(sqlScolarite)) {
+					/*----- Exécution de la requête -----*/
+					st.setString(1, login);
+					try (ResultSet rs = st.executeQuery()) {
+						while (rs.next()) {
+							if (pwd.equals(rs.getString("pwd"))) {
+								scolarite.setIdS(rs.getInt("idS"));
+								scolarite.setNom(rs.getString("nom"));
+								scolarite.setPrenom(rs.getString("prenom"));
+								scolarite.setLogin(rs.getString("login"));
+								scolarite.setPwd(rs.getString("pwd"));
+								
+								return scolarite;
+							}
 						}
 					}
 				}
-			}
-		}
-		// VERIFIER SI LA CONNEXION APPARTIENT UN SCOLARITE
-		else if (type.equals("Scolarite")) {
-			Scolarite scolarite = new Scolarite();
-
-			try (PreparedStatement st = Bd.cx.prepareStatement(sqlScolarite)) {
-				/*----- Exécution de la requête -----*/
-				st.setString(1, login);
-				try (ResultSet rs = st.executeQuery()) {
-					while (rs.next()) {
-						if (pwd.equals(rs.getString("pwd"))) {
-							scolarite.setIdS(rs.getInt("idS"));
-							scolarite.setNom(rs.getString("nom"));
-							scolarite.setPrenom(rs.getString("prenom"));
-							scolarite.setLogin(rs.getString("login"));
-							scolarite.setPwd(rs.getString("pwd"));
-							
-							return scolarite;
-						}
-					}
+				catch (SQLException ex) {
+					throw new SQLException("Exception Bd.verifierConnexion() : Problème SQL - " + ex.getMessage());
 				}
 			}
+			return null;
 		}
+		return null;
+	}
+	
+	/*
+	 * Modifier la photo de etudiant
+	 */
+	public static void modifierPhotoEtudiant(Blob fileContent,String loginE) throws Exception {
+		/*----- Création de la connexion à la base de données -----*/
+		if (Bd.cx == null)
+			Bd.connexion();
 		
-		User user=null;
-		return user;
+		String sql="UPDATE Etudiant SET PhotoE=? WHERE loginE=?";
 		
+		try (PreparedStatement ps = Bd.cx.prepareStatement(sql)){
+			/*----- Exécution de la requête -----*/
+		      ps.setBlob(1, fileContent);
+		      ps.setString(2, loginE);
+		      ps.executeUpdate();
+		      ps.close();
+		    } catch(SQLException sqle) {
+				throw new Exception("Bd.modifierPhotoEtudiant() - Erreur a l'insertion." +sqle);
+			}
 	}
 
 	/*
@@ -181,7 +222,7 @@ public class Bd {
 
 			}
 		} catch (SQLException ex) {
-			throw new SQLException("Exception Bd.listeMot() : Problème SQL - " + ex.getMessage());
+			throw new SQLException("Exception Bd.infoEnseign() : Problème SQL - " + ex.getMessage());
 		}
 
 		return seances;
@@ -194,7 +235,7 @@ public class Bd {
 		try {
 			Bd.connexion();
 			//test verifierConnexion
-			System.out.println(Bd.verifierConnexion("pinot-buzet@123.com", "123", "Scolarite").getNom());
+			System.out.println(Bd.verifierConnexion("luo@123.com", "123", "Etudiant").getNom());
 			
 			//----------------------
 			ArrayList<Seance> seances = Bd.infoEnseign("bour@123.com");

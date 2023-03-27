@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="ajax.metier.User" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>page d'eudiant</title>
 <link rel="stylesheet" href="fonts/font.css">
 <link rel="stylesheet" href="css/pageEtu1.css">
+<script type="text/JavaScript" src="js/fctxmlEtudiant.js"></script>
 </head>
 <body>
 <div class="container">
@@ -66,20 +70,30 @@
                 </div>
                 
             </div>
-            
-           <div class="middle">
-  
-           		<div> <b>Nom : </b>hh</div>
-            	<div> Prenom :</div>
-            	<div> Email :</div>
-            	<div> Type :</div>
-            	<div> Formation :</div>
-            	<div> Photo :</div>
-            	 
-    </div>
-           
+          
+			
+			
+           	<div class="middle">
+           		<div> <b>Nom : </b>${sessionScope.user.getNom()}</div>
+            	<div> <b>Prenom : </b>${sessionScope.user.getPrenom()}</div>
+            	<div> <b>Email : </b>${sessionScope.user.getEmailE()}</div>
+            	<div> <b>Type : </b>${sessionScope.user.getTypeE()}</div>
+            	<div> <b>Formation : </b>${sessionScope.user.getFormation()}</div>
+            	<div id="containerPhoto"> 
+	            	<b>Photo : </b>
+	            	<img src="data:image/png;base64,${encodedImage}" id="image-preview"/>
+	            	<div id="buttonUpdate">
+		            	
+		  				<input type="file" name="file" id="file">
+		  				<br>
+		  				<input type="button" value="Changer le photo" id="updatePhoto" onclick="uploadFile()">
+						
+					</div>
+				</div>
+	    	</div>        
         </div>
     </div>
+    
     <script >
  // 获取要操作的元素
     let items=document.querySelectorAll('.item');
